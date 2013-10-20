@@ -1,0 +1,4 @@
+credentials.json
+*~
+*.swp
+/node_modules

@@ -1,0 +1,21 @@
+{
+  "name": "yahoo-weather",
+  "version": "0.1.0",
+  "description": "Shows the weather for your location.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "johnnys-node-static"   : "*",
+    "johnnys-weather"       : "*"
+  },
+  "keywords": [
+    "contact",
+    "embed",
+    "code"
+  ],
+  "author": "Ionică Bizău <bizauionica@gmail.com>",
+  "license": "The MIT Licence"
+}
