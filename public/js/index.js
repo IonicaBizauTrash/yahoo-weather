@@ -3,10 +3,18 @@ $(document).ready(function () {
 
     $(".location").on("input", function () {
         clearTimeout(timeout);
+        var $locTextInput = $(this);
         timeout = setTimeout(function () {
-        }, 3000);
+            updateUI($locTextInput.val());
+        }, 700);
     });
 });
+
+function updateUI (userLocation, callback) {
+    getWeather(userLocation, function (err, weatherData) {
+        debugger;
+    });
+}
 
 function getWeather (userLocation, callback) {
 
@@ -30,7 +38,7 @@ function getWeather (userLocation, callback) {
         error: function (data) {
             // get the json response
             data = data.responseJSON;
-            callback(null, data.error || data);
+            callback(data.error || data);
         },
         // with data type: json
         dataType: "json"
