@@ -1,18 +1,28 @@
 $(document).ready(function () {
     var timeout;
 
+    $(".btn-refresh").on("click", updateUI);
     $(".location").on("input", function () {
         clearTimeout(timeout);
-        var $locTextInput = $(this);
-        timeout = setTimeout(function () {
-            updateUI($locTextInput.val());
-        }, 700);
+        timeout = setTimeout(updateUI, 700);
+    }).on("keyup", function (e) {
+        if (e.keyCode === 13) {
+            $(".btn-refresh").click();
+        }
     });
 });
 
-function updateUI (userLocation, callback) {
+function updateUI () {
+
+    var $locTextInput = $(".location");
+    var userLocation = $locTextInput.val();
+
+    var $refresh = $(".btn-refresh");
+
+    $refresh.prop("disabled", true);
     getWeather(userLocation, function (err, weatherData) {
-        debugger;
+        $(".output").val(JSON.stringify(weatherData, null, 4));
+        $refresh.prop("disabled", false);
     });
 }
 
